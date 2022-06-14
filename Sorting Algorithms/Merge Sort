@@ -1,0 +1,51 @@
+void merge(vector<int> &arr,int s,int e){
+    int size = e - s + 1;
+    int mid = (s + e)/2;
+    int i = s;
+    int j = mid + 1;
+    int k = 0;
+    vector<int> temp;
+    
+    while(i<=mid && j<=e){
+        if(arr[i] <= arr[j]){
+            temp.push_back(arr[i]);
+            i++;
+        }
+        else{
+            temp.push_back(arr[j]);
+            j++;
+        }
+    }
+    
+    while(i<=mid){
+        temp.push_back(arr[i]);
+        i++;
+    }
+    
+    while(j<=e){
+        temp.push_back(arr[j]);
+        j++;
+    }
+    
+    int m = 0;
+    for(int i=s;i<=e;i++){
+        arr[i] = temp[m++];
+    }
+}
+
+void mergeSort(vector<int> &arr,int s,int e){
+    if(s>=e)
+        return;
+    
+    int mid = (s+e)/2;
+    mergeSort(arr,s,mid);
+    mergeSort(arr,mid+1,e);
+    merge(arr,s,e);
+}
+
+void mergeSort(vector < int > & arr, int n) {
+    // Write your code here.
+    int s = 0;
+    int e = n-1;
+    mergeSort(arr,s,e);
+}
