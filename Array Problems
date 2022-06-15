@@ -1,0 +1,89 @@
+#include<bits/stdc++.h>
+
+vector<pair<int,int>> twoSum(vector<int>& arr, int target, int n){
+
+   
+
+// TC -> O(N)
+
+   // SC -> O(N)  
+
+   
+
+   sort(arr.begin(), arr.end());
+
+   vector<pair<int, int>> res;
+
+   
+
+   int l = 0, r = n-1;   // Taking two pointers for checking
+
+   
+
+   while(l < r){
+
+       
+
+       // if same with target, store in vec by creating pair
+
+       if(arr[l] + arr[r] == target){
+
+           pair<int, int> p(arr[l], arr[r]);
+
+           res.push_back(p);
+
+           l++;
+
+           r--;
+
+       }
+
+       
+
+       // if sum of two values less than target, l is incremented.
+
+       else if(arr[l] + arr[r] < target){
+
+           l++;
+
+       }
+
+       
+
+       // if sum of two values greater than target, r is decremented.
+
+       
+
+       else{
+
+           r--;
+
+       }
+
+   }
+
+   
+
+   // if res. size() > 0, means there is some pairs, so return vec
+
+   
+
+   if(res.size() > 0) return res;
+
+   
+
+   // if there is no pairs in res, means res.size() = 0, create a pair (-1, -1), store in the res and return res.
+
+   
+
+   else{
+
+       pair<int, int> p(-1, -1);
+
+       res.push_back(p);
+
+       return res;
+
+   }
+
+}
