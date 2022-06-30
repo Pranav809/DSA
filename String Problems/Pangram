@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+void ans (int n, string S)
+{
+    // Write your code here
+    vector<bool> mark(26, false);
+    
+    int index;
+    
+    for(int i=0; i<S.length(); i++){
+        if(S[i] >= 'A' && S[i] <= 'Z'){
+            index = S[i] - 'A';        
+        }
+        
+        else if(S[i] >= 'a' && S[i] <= 'z'){
+            index = S[i] - 'a';
+        }
+        
+        mark[index] = true;
+    }
+    
+    for(int i=0;i<=25;i++){
+        if(mark[i]==false){
+            cout << "NO";
+            return;
+        }
+    }
+    cout << "YES";
+}
