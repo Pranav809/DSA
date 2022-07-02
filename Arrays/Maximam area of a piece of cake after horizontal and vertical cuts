@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxArea(int h, int w, vector<int>& horizontalCuts, vector<int>& verticalCuts) {
+        int MOD = 1e9 + 7;
+        
+        horizontalCuts.push_back(h);                          //Pushing the height in order to get the boundary cut
+        sort(horizontalCuts.begin(), horizontalCuts.end());   //sorting the horizontal cuts so that there difference may not be negativ
+        int maxh = horizontalCuts[0];                         //maxhorizontal element
+        for(int i=1;i<horizontalCuts.size();i++){
+            maxh = max(maxh, horizontalCuts[i]-horizontalCuts[i-1]); //Finding the max horizontal difference 
+        }
+        
+        verticalCuts.push_back(w);
+        sort(verticalCuts.begin(), verticalCuts.end());
+        int maxv = verticalCuts[0];
+        for(int i=1;i<verticalCuts.size();i++){
+            maxv = max(maxv, verticalCuts[i] - verticalCuts[i-1]);
+        }
+        
+        return (1ll*maxh*maxv) % MOD;
+    }
+};
